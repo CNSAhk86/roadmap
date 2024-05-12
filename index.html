@@ -17,25 +17,25 @@
   @keyframes cursor {
     50% { border-color: transparent; }
   }
-
+  
   .text {
     border-right: .05em solid rgb(255, 255, 255);
     animation: cursor 0.5s ease infinite;
     display: table-cell;
   }
-
+  
   .table {
     display: flex;
     justify-content: center;
   }
-
+  
   .roadmap {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
   }
-
+  
   .stage {
     width: 95%;
     padding: 10px;
@@ -45,37 +45,39 @@
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 7px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   }
-
+  
   .stage:hover {
     background-color: #444;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
   }
-
+  
   .detail {
     padding: 5px;
     color: #ccc;
-    height: 15px; /* 변경 */
+    max-height: 15px;  /* Ensure this is max-height for closed state */
     overflow: hidden;
-    transition: height 0.5s ease; /* 변경 */
+    transition: max-height 0.5s ease;
   }
-
+  
   .stage.active .detail {
-    height: 15px; /* 변경 */
+    max-height: 750px; /* Maximum height when active */
   }
-
+  
   h2 {
     margin: 0;
   }
-
+  
   img {
     border-radius: 10px;
   }
-
+  
   .footer {
     display: flex;
     justify-content: center;
   }
-
+  
 </style>
 </head>
 <body>
@@ -84,62 +86,63 @@
   <h1 style="color: #fff;" class="text"></h1>
 </div>
 <div class="roadmap">
-    <div class="stage active" onclick="toggleDetail('stage1')">
-        <h2>나의 청춘, 20대</h2>
-        <div id="stage1" class="detail"><strong>Staring Point Of My Life</strong>
-          <br><br><br>
-          - 컴퓨터 과학 관련 전문지식 취득하기 <br><br>
-          <img width="300px" height="150px" src="https://kciter.so/images/2023-07-24-functional-data-structure/thumbnail.png"> <br><br>
-          - 프론트엔드 개발자로써의 역량 쌓기 <br><br>
-          <img width="300px" height="170px" src="https://velog.velcdn.com/images/jojeon4515/post/bd5f6da9-34ee-4f04-8afb-bb853341fb6f/image.png">
-          <br><br>- 스스로 웹 포트폴리오 제작해보기 <br><br>
-          <strong><a href="https://cnsahk86.github.io/timer/">임의로 만든 타이머 포트폴리오 방문하기</a></strong><br><br><br>
-          놀랍게도 이건 본 사이트 주인이 만든 타이머입니다! 
-          공부하다가 알람이 필요해서 직접 만들었다는데요! <br>
-          재미있는 브금과 깔끔한 UI로 누구나 사용하기 간편하니 
-          여러분들도 한 번 직접 사용해보시는 건 어떠세요? <br> <br>
-          </div>
-
-    </div>
-    <div class="stage" onclick="toggleDetail('stage2')">
-        <h2>사회생활인, 30~40대</h2>
-        <div id="stage2" class="detail"><strong>Turning Point Of My Life</strong>
-          <br><br>
-        - 카카오 입사하기 <br><br>
-        <img width="170px" height="150px" src="https://img.hankyung.com/photo/202004/d744af8c6b5cbe6d52746566f5ccb4ed.jpg"><br><br>
-        - 풀스텍 개발 공부하기 <br><br>
-        <img width="300px" height="150px" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/course/4201/11834.png"><br><br>
-        - 시니어 풀스텍 개발자 되기<br><br>
-        <img width="320px" height="200px" src="https://blog.goorm.io/wp-content/uploads/2023/10/1-5-1024x562.png"> <br><br>
-        - 개발 관련 블로그 운영하기
-        </div>
-      </div>
-    <div class="stage" onclick="toggleDetail('stage3')">
-        <h2>황혼의 시작, 50~60대</h2>
-        <div id="stage3" class="detail"><strong>New Starting Point Of My Life</strong> <br><br>
-        - 자녀 진학 및 독립시키기 <br><br>
-        - 스타트업 차리고 어느정도 성공하기 <br> <br>
-        <img width="300px" height="170px" src="https://cdn.it.chosun.com/news/photo/202012/2020123003173_1.jpg"> <br> <br>
-        - 가족과 즐거운 추억 쌓기 <br><br>
-        - 세계일주 해보기 <br><br>
-        - 나만의 인디게임 만들기 <br><br>
-        <img width="300px" height="200px" src="https://img.hankyung.com/photo/202311/AKR20231103123400017_02_i_P4.jpg"> <br> <br>
-        - IT 관련 국제 자원봉사 진행하기 <br><br>
-        
-        </div>
-    </div>
-    <div class="stage" onclick="toggleDetail('stage4')">
-      <h2>즐거운 노후, 70~80대</h2>
-      <div id="stage4" class="detail"><strong>The Last Point Of My Life</strong><br><br>
-        - 가족과 즐거운 시간 보내기 <br> <br>
-        - 에세이 쓰기 (자서전) <br> <br>
-        <img width="300px" height="300px" src="https://thx.sfo2.cdn.digitaloceanspaces.com/wr/coverimages/m_11/%EC%9E%90%EC%84%9C%EC%A0%84_11.jpg"> <br> <br>
-        - 나만의 주택에서 가족들과 행복하게 살기 <br> <br>
-        - 죽음에 대비하기 <br> <br>
-        <img width="300px" height="200px" src="https://file.mk.co.kr/meet/neds/2019/03/image_readtop_2019_128494_15516635733655795.jpg">
+  <!-- Stage 1 initially closed -->
+  <div class="stage" onclick="toggleDetail('stage1')">
+    <h2>나의 청춘, 20대</h2>
+    <div id="stage1" class="detail"><strong>Staring Point Of My Life</strong>
+      <br><br><br>
+      - 컴퓨터 과학 관련 전문지식 취득하기 <br><br>
+      <img width="300px" height="150px" src="https://kciter.so/images/2023-07-24-functional-data-structure/thumbnail.png"> <br><br>
+      - 프론트엔드 개발자로써의 역량 쌓기 <br><br>
+      <img width="300px" height="170px" src="https://velog.velcdn.com/images/jojeon4515/post/bd5f6da9-34ee-4f04-8afb-bb853341fb6f/image.png">
+      <br><br>- 스스로 웹 포트폴리오 제작해보기 <br><br>
+      <strong><a href="https://cnsahk86.github.io/timer/">임의로 만든 타이머 포트폴리오 방문하기</a></strong><br><br><br>
+      놀랍게도 이건 본 사이트 주인이 만든 타이머입니다! 
+      공부하다가 알람이 필요해서 직접 만들었다는데요! <br>
+      재미있는 브금과 깔끔한 UI로 누구나 사용하기 간편하니 
+      여러분들도 한 번 직접 사용해보시는 건 어떠세요? <br> <br>
       </div>
   </div>
-</div> <br><br><br><br><br><br><br>
+  <div class="stage" onclick="toggleDetail('stage2')">
+    <h2>사회생활인, 30~40대</h2>
+    <div id="stage2" class="detail"><strong>Turning Point Of My Life</strong>
+      <br><br>
+    - 카카오 입사하기 <br><br>
+    <img width="170px" height="150px" src="https://img.hankyung.com/photo/202004/d744af8c6b5cbe6d52746566f5ccb4ed.jpg"><br><br>
+    - 풀스텍 개발 공부하기 <br><br>
+    <img width="300px" height="150px" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/course/4201/11834.png"><br><br>
+    - 시니어 풀스텍 개발자 되기<br><br>
+    <img width="320px" height="200px" src="https://blog.goorm.io/wp-content/uploads/2023/10/1-5-1024x562.png"> <br><br>
+    - 개발 관련 블로그 운영하기
+    </div>
+  </div>
+<div class="stage" onclick="toggleDetail('stage3')">
+    <h2>황혼의 시작, 50~60대</h2>
+    <div id="stage3" class="detail"><strong>New Starting Point Of My Life</strong> <br><br>
+    - 자녀 진학 및 독립시키기 <br><br>
+    - 스타트업 차리고 어느정도 성공하기 <br> <br>
+    <img width="300px" height="170px" src="https://cdn.it.chosun.com/news/photo/202012/2020123003173_1.jpg"> <br> <br>
+    - 가족과 즐거운 추억 쌓기 <br><br>
+    - 세계일주 해보기 <br><br>
+    - 나만의 인디게임 만들기 <br><br>
+    <img width="300px" height="200px" src="https://img.hankyung.com/photo/202311/AKR20231103123400017_02_i_P4.jpg"> <br> <br>
+    - IT 관련 국제 자원봉사 진행하기 <br><br>
+    
+    </div>
+</div>
+<div class="stage" onclick="toggleDetail('stage4')">
+  <h2>즐거운 노후, 70~80대</h2>
+  <div id="stage4" class="detail"><strong>The Last Point Of My Life</strong><br><br>
+    - 가족과 즐거운 시간 보내기 <br> <br>
+    - 에세이 쓰기 (자서전) <br> <br>
+    <img width="300px" height="300px" src="https://sajeokin-bookshop.com/web/product/big/202010/be0dcbfb899744c4c199a4e124d2bf64.png"> <br> <br>
+    - 나만의 주택에서 가족들과 행복하게 살기 <br> <br>
+    - 죽음에 대비하기 <br> <br>
+    <img width="300px" height="200px" src="https://file.mk.co.kr/meet/neds/2019/03/image_readtop_2019_128494_15516635733655795.jpg">
+  </div>
+</div>
+</div>
+<br><br><br><br><br><br><br>
 <strong class="footer">Made By Byeong Hun Han</strong>
 <br><br><br><br><br><br><br>
 <script>
@@ -151,29 +154,23 @@
     if(index >= content.length) {
       console.log('타이핑 끝')
     } else {
-      text.textContent += content[index++]
+      text.textContent += content[index++];
     }
   }
 
-  setInterval(typing, 150)
+  setInterval(typing, 150);
 
   function toggleDetail(id) {
     var detail = document.getElementById(id);
-    var isActive = detail.classList.contains('active');
+    var isActive = detail.parentElement.classList.contains('active');
+    var stages = document.querySelectorAll('.stage');
     
-    // 모든 세부 정보를 초기화
-    document.querySelectorAll('.detail').forEach(function(d) {
-      d.style.height = '15px'; // 모든 세부 정보를 접습니다.
-      d.parentElement.classList.remove('active');
+    stages.forEach(stage => {
+      stage.classList.remove('active');
     });
 
-    // 클릭된 세부 정보 토글
-    if (isActive) {
-      detail.style.height = '15px'; // 펼쳐질 때는 300px
+    if (!isActive) {
       detail.parentElement.classList.add('active');
-    } else if (!isActive) {
-      detail.style.height = '750px';
-      detail.parentElement.classList.remove('active');
     }
   }
 </script>
